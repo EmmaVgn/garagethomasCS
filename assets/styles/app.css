@@ -377,6 +377,13 @@ form button:hover {
 /*--------------------------------------------------------------
   Filtre
 --------------------------------------------------------------*/
+.filter {
+  display: block;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 20px;
+}
+
 .box {
   padding: 10px;
 }
@@ -428,11 +435,11 @@ form button:hover {
   height: 10px;
   border-radius: 10px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  width: 100%; /* Assurez-vous que le slider occupe toute la largeur */
+  width: 100%;
 }
 
 .noUi-connect {
-  background: #1c5634 !important; /* Couleur verte pour la partie sélectionnée du slider */
+  background: #1c5634 !important;
 }
 
 .noUi-handle {
@@ -445,8 +452,8 @@ form button:hover {
 
 /* Styles pour le slider et les inputs pour assurer l'uniformité */
 .input-slider-container {
-  position: relative; /* Position relative pour aligner le slider */
-  margin: 0; /* Supprimez toute marge supplémentaire */
+  position: relative;
+  margin: 0;
 }
 
 #price-slider,
@@ -456,7 +463,28 @@ form button:hover {
 }
 
 /* Ajout de styles aux inputs pour uniformité */
-input[type="number"], /* Ajuster le type d'input si nécessaire */
+input[type="number"],
 input[type="text"] {
-  width: 100%; /* Assurez-vous que les inputs occupent toute la largeur */
+  width: 100%;
+}
+
+/*--------------------------------------------------------------
+  # Spinner
+  --------------------------------------------------------------*/
+.is-loading::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #fff;
+  opacity: 0.5;
+  z-index: 4;
+}
+.is-loading .spinner-border {
+  position: absolute;
+  top: calc(50% - 1rem);
+  left: calc(50% - 1rem);
+  z-index: 5;
 }

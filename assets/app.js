@@ -10,6 +10,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import 'bootstrap';
 import './js/nouislider.min.js';
 import './styles/nouislider.min.css';
+import './js/filter.js';
 
 
 console.log('This log comes from assets/app.js - welcome to AssetMapper! 🎉');

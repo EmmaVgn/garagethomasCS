@@ -56,28 +56,28 @@ class SearchFormType extends AbstractType
                 'label' => false,
                 'required' => false,
                 'attr' => [
-                    'placeholder' => 'Prix minimum'
+                    'placeholder' => 'Prix min'
                 ],
             ])
             ->add('maxPrice', NumberType::class, [
                 'label' => false,
                 'required' => false,
                 'attr' => [
-                    'placeholder' => 'Prix maximum'
+                    'placeholder' => 'Prix max'
                 ],
             ])
             ->add('minKms', NumberType::class, [
                 'label' => false,
                 'required' => false,
                 'attr' => [
-                    'placeholder' => 'Kilomètres min.'
+                    'placeholder' => 'Kilomètres min'
                 ],
             ])
             ->add('maxKms', NumberType::class, [
                 'label' => false,
                 'required' => false,
                 'attr' => [
-                    'placeholder' => 'Kilomètres max.'
+                    'placeholder' => 'Kilomètres max'
                 ],
             ])
             ->add('minCirculationAt', DateTimeType::class, [
@@ -86,6 +86,9 @@ class SearchFormType extends AbstractType
                 'format' => 'yyyy',
                 'widget' => 'single_text',
                 'html5' => false,
+                'attr' => [
+                    'placeholder' => 'Année min'
+                ],
             ])
             ->add('maxCirculationAt', DateTimeType::class, [
                 'label' => false,
@@ -93,6 +96,9 @@ class SearchFormType extends AbstractType
                 'widget' => 'single_text',
                 'format' => 'yyyy',
                 'html5' => false,
+                'attr' => [
+                    'placeholder' => 'Année max'
+                ],
             ])
         ;
     }

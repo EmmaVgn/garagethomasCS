@@ -1,14 +1,16 @@
 <?php
 namespace App\Controller;
+use DateTime;
 use App\Data\SearchData;
 use App\Form\SearchFormType;
 use App\Repository\ProductRepository;
 use App\Repository\CategoryRepository;
-use DateTime;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+
 class ProductController extends AbstractController
 {
     #[Route('/{slug}', name: 'product_category', priority: -1)]
@@ -51,14 +53,29 @@ class ProductController extends AbstractController
         $form = $this->createForm(SearchFormType::class, $data);
         $form->handleRequest($request);
 
-        $minDate = new DateTime('Y');
-        $maxDate = new DateTime('Y');
-
         [$minPrice, $maxPrice] = $productRepository->findMinMaxPrice($data);
         [$minKms, $maxKms] = $productRepository->findMinMaxKms($data);
         [$minDate, $maxDate] = $productRepository->findMinMaxDate($data);
         $products = $productRepository->findSearch($data);
 
+        // $totalItems = $productRepository->countItems($data);
+        if ($request->get('ajax')) {
+            return new JsonResponse([
+                'content' => $this->renderView('product/_products.html.twig', [
+                    'products' => $products,
+                ]),
+
+                'sorting' => $this->renderView('product/_sorting.html.twig', ['products' => $products]),
+                'pagination' => $this->renderView('product/_pagination.html.twig', ['products' => $products]),
+                'minPrice' => $minPrice,
+                'maxPrice' => $maxPrice,
+                'minKms' => $minKms,
+                'maxKms' => $maxKms,
+                'minDate' => $minDate,
+                'maxDate' => $maxDate,
+            ]);
+        }
+        
         return $this->render('product/display.html.twig', [
             'products' => $products,
             'form' => $form,
@@ -68,6 +85,7 @@ class ProductController extends AbstractController
             'maxKms' => $maxKms,
             'minDate' => $minDate,
             'maxDate' => $maxDate,
+            // 'totalItems' => $totalItems,
         ]);
     }
 }

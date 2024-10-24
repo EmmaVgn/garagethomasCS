@@ -6,6 +6,7 @@ use App\Repository\CategoryRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: CategoryRepository::class)]
 class Category
@@ -16,6 +17,7 @@ class Category
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: 'Le nom de la catégorie est obligatoire !')]
     private ?string $name = null;
 
     #[ORM\Column(length: 255)]
@@ -73,21 +75,20 @@ class Category
     {
         if (!$this->products->contains($product)) {
             $this->products->add($product);
-            $product->setProducts($this);
+            $product->setCategory($this);
         }
 
         return $this;
     }
-
     public function removeProduct(Product $product): static
     {
         if ($this->products->removeElement($product)) {
             // set the owning side to null (unless already changed)
-            if ($product->getProducts() === $this) {
-                $product->setProducts(null);
+            if ($product->getCategory() === $this) {
+                $product->setCategory(null);
             }
+            
         }
-
         return $this;
     }
 }

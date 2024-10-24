@@ -5,31 +5,45 @@ namespace App\Entity;
 use App\Repository\ProductRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\DBAL\Types\Types;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ProductRepository::class)]
 class Product
 {
+
+    public const STATUS_GASOLINE = 'Essence';
+    public const STATUS_DIESEL = 'Diesel';
+    public const STATUS_HYBRID = 'Hybride';
+    public const STATUS_ELECTRIC = 'Electrique';
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: "Le nom du véhicule est obligatoire !")]
+    #[Assert\Length(min: 3, max: 255, minMessage: 'Le nom du véhicule doit avoir au moins {{ limit }} caractères')]
     private ?string $name = null;
 
     #[ORM\Column(length: 255)]
     private ?string $slug = null;
 
     #[ORM\Column]
+    #[Assert\NotBlank(message: 'Le prix du véhicule est obligatoire !')]
     private ?int $price = null;
 
     #[ORM\Column]
+    #[Assert\NotBlank(message: 'Le kilométrage du véhicule est obligatoire !')]
     private ?int $kilometers = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $energy = null;
+    #[Assert\NotBlank(message: 'La motorisation du véhicule est obligatoire !')]
+    private ?string $energy = 'Essence';
 
     #[ORM\Column(type: Types::TEXT)]
+    #[Assert\NotBlank(message: "La description courte est obligatoire")]
+    #[Assert\Length(min: 20, minMessage: "La description courte doit faire au moins {{ limit }} caractères")]
     private ?string $shortDescription = null;
 
     #[ORM\Column]
@@ -138,7 +152,7 @@ class Product
     public function setCategory(?Category $category): static
     {
         $this->category = $category;
-        
+
         return $this;
     }
 

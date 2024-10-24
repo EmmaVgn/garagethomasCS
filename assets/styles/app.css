@@ -1,3 +1,183 @@
+/*--------------------------------------------------------------
+# Général
+--------------------------------------------------------------*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 1rem;
+}
+
 body {
-    background-color: skyblue;
+  font-family: "Roboto Slab", serif;
+  color: #333333;
+  background-color: #f0f0f0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Josefin Slab", serif;
+}
+
+/*--------------------------------------------------------------
+      Boutons
+  --------------------------------------------------------------*/
+.btn {
+  background-color: #1c5634; /* Couleur normale */
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn:hover {
+  background-color: #386d4f; /* Couleur au survol */
+  transform: scale(1.05);
+}
+
+/*--------------------------------------------------------------
+      Logo
+  --------------------------------------------------------------*/
+.logo {
+  width: 150px;
+  height: auto;
+}
+
+/*--------------------------------------------------------------
+      Navbar
+  --------------------------------------------------------------*/
+.navbar {
+  font-family: "Roboto Slab", serif;
+  background-color: #ffffff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-nav {
+  flex-direction: row;
+}
+
+.nav-item {
+  margin-right: 50px;
+}
+
+.nav-link {
+  color: rgb(28, 86, 52);
+  transition: color 0.3s, background-color 0.3s;
+  white-space: nowrap;
+  padding: 5px 10px;
+}
+
+.nav-link:hover {
+  color: rgb(56, 109, 79);
+  background-color: rgba(56, 109, 79, 0.1);
+  border-radius: 5px;
+}
+
+.nav-item.active .nav-link {
+  color: rgb(56, 109, 79);
+}
+
+/* Styles pour la navbar en mode responsive */
+@media (max-width: 768px) {
+  .navbar {
+    padding: 10px;
+  }
+
+  .nav-link {
+    font-size: 14px;
+  }
+}
+
+/*--------------------------------------------------------------
+    Navbar - Effet de défilement
+--------------------------------------------------------------*/
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -5px;
+  height: 2px;
+  background-color: rgb(56, 109, 79);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.nav-link:hover::after {
+  transform: scaleX(1);
+}
+
+/*--------------------------------------------------------------
+    Footer
+--------------------------------------------------------------*/
+.footer {
+  background-color: #1c5634;
+  color: #ffffff;
+  padding: 40px 0;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.footer-section {
+  flex: 1;
+  min-width: 200px;
+  margin: 0 20px;
+}
+
+.footer-section h4 {
+  margin-bottom: 20px;
+  color: #ffc107;
+}
+
+.footer-section p,
+.footer-section ul {
+  line-height: 1.6;
+}
+
+.footer-section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.footer-section ul li {
+  margin: 10px 0;
+}
+
+.footer-section ul li a {
+  color: #ffffff;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-section ul li a:hover {
+  color: #ffc107;
+}
+
+.social-icons {
+  margin-top: 10px;
+}
+
+.social-icons a {
+  color: #ffffff;
+  margin-right: 15px;
+  font-size: 24px;
+  transition: color 0.3s;
+}
+
+.social-icons a:hover {
+  color: #ffc107;
+}
+
+.footer-bottom {
+  text-align: center;
+  margin-top: 20px;
 }

@@ -1,17 +1,31 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
-        {% block stylesheets %}
-        {% endblock %}
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="keywords" content="garage, automobile, ecf"/>
+		<meta name="author" content="Emma VIGNERON">
+		<meta name="description" content="Le Garage Thomas est un garage de confiance">
+		<title>
+			{% block title %}Bienvenue sur le site du Garage Thomas !
+			{% endblock %}
+		</title>
+		<script src="https://kit.fontawesome.com/50d220494b.js" crossorigin="anonymous"></script>
+		<link href="Assets/fontawesome-free-6.4.2-desktop"> {% block stylesheets %}{% endblock %}
 
-        {% block javascripts %}
-            {% block importmap %}{{ importmap('app') }}{% endblock %}
-        {% endblock %}
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-    </body>
+		{% block javascripts %}
+			{% block importmap %}
+				{{ importmap('app') }}
+			{% endblock %}
+		{% endblock %}
+	</head>
+	<body>
+		{% include "shared/_navbar.html.twig" %}
+		<div class="container pt-5">
+			{% include "shared/_flash.html.twig" %}
+			{% block body %}{% endblock %}
+		</div>
+		{% include "shared/_footer.html.twig" %}
+
+	</body>
 </html>

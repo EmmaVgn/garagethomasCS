@@ -1,0 +1,91 @@
+{{ form_start(form, {'attr': {'class': 'filter'}}) }}
+{{ form_row(form.q) }}
+<div class="box border-top border-bottom ps-1">
+	<div class="box-label text-uppercase d-flex align-items-center">
+		Catégories
+		<button class="btn ms-auto" type="button" data-bs-toggle="collapse" href="#collapseCategories" aria-expanded="false" aria-controls="collapseCategories">
+			<span class="fas fa-plus"></span>
+		</button>
+	</div>
+	<div class="collapse show mt-2 ps-2" id="collapseCategories">
+		{{ form_row(form.categories) }}
+	</div>
+</div>
+<div class="box border-bottom ps-1">
+	<div class="box-label text-uppercase d-flex align-items-center">
+		Marques
+		<button class="btn ms-auto" type="button" data-bs-toggle="collapse" href="#collapseModels" aria-expanded="false" aria-controls="collapseModels">
+			<span class="fas fa-plus"></span>
+		</button>
+	</div>
+	<div class="collapse mt-2 ps-2" id="collapseModels">
+		{{ form_row(form.model) }}
+	</div>
+</div>
+<div class="box border-bottom ps-1 pb-3">
+	<div class="box-label text-uppercase d-flex align-items-center">
+		Prix
+	</div>
+	<div class="row mb-3">
+		<div class="col-md-6">
+			<div class="form-error">
+				{{ form_errors(form.minPrice) }}
+			</div>
+			<div class="d-flex align-items-center">
+				{{ form_widget(form.minPrice) }}
+				<span>€</span>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="d-flex align-items-center">
+				{{ form_widget(form.maxPrice) }}
+				<span>€</span>
+			</div>
+		</div>
+	</div>
+	<div id="price-slider" data-min="{{ minPrice }}" data-max="{{ maxPrice }}"></div>
+</div>
+<div class="box border-bottom ps-1 pb-3">
+	<div class="box-label text-uppercase d-flex align-items-center">
+		Kilomètres
+	</div>
+	<div class="row mb-3">
+		<div class="col-md-6">
+			<div class="form-error">
+				{{ form_errors(form.minKms) }}
+			</div>
+			<div class="d-flex align-items-center">
+				{{ form_widget(form.minKms) }}
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="d-flex align-items-center">
+				{{ form_widget(form.maxKms) }}
+			</div>
+		</div>
+	</div>
+	<div id="kms-slider" data-min="{{ minKms }}" data-max="{{ maxKms }}"></div>
+</div>
+<div class="box border-bottom ps-1 pb-3">
+	<div class="box-label text-uppercase d-flex align-items-center">
+		Années
+	</div>
+	<div class="row mb-3">
+		<div class="col-md-6">
+			<div class="form-error">
+				{{ form_errors(form.minCirculationAt) }}
+			</div>
+			<div class="d-flex align-items-center">
+				{{ form_widget(form.minCirculationAt) }}
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="d-flex align-items-center">
+				{{ form_widget(form.maxCirculationAt) }}
+			</div>
+		</div>
+	</div>
+	<div id="date-slider" data-min="{{ minDate }}" data-max="{{ maxDate }}"></div>
+</div>
+<button class="btn btn-outline-success w-100 mt-3 mb-4">Filtrer</button>
+{{ form_end(form) }}

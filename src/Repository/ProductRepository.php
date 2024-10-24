@@ -3,41 +3,135 @@
 namespace App\Repository;
 
 use App\Entity\Product;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use App\Data\SearchData;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
+use Knp\Component\Pager\PaginatorInterface;
+use Knp\Component\Pager\Pagination\PaginationInterface;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @extends ServiceEntityRepository<Product>
+ *
+ * @method Product|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Product|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Product[]    findAll()
+ * @method Product[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
 class ProductRepository extends ServiceEntityRepository
 {
-    public function __construct(ManagerRegistry $registry)
+    protected PaginatorInterface $paginator;
+
+    public function __construct(ManagerRegistry $registry, PaginatorInterface $paginator)
     {
         parent::__construct($registry, Product::class);
+        $this->paginator = $paginator;
     }
 
-//    /**
-//     * @return Product[] Returns an array of Product objects
-//     */
-//    public function findByExampleField($value): array
-//    {
-//        return $this->createQueryBuilder('p')
-//            ->andWhere('p.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->orderBy('p.id', 'ASC')
-//            ->setMaxResults(10)
-//            ->getQuery()
-//            ->getResult()
-//        ;
-//    }
+    public function findSearch(SearchData $search): PaginationInterface
+    {
+        $query = $this->getSearchQuery($search)->getQuery();
+        return $this->paginator->paginate($query, $search->page, 6);
+    }
 
-//    public function findOneBySomeField($value): ?Product
-//    {
-//        return $this->createQueryBuilder('p')
-//            ->andWhere('p.exampleField = :val')
-//            ->setParameter('val', $value)
-//            ->getQuery()
-//            ->getOneOrNullResult()
-//        ;
-//    }
+    public function countItems(SearchData $search): int
+    {
+        return count($this->getSearchQuery($search)->getQuery()->getResult());
+    }
+
+    public function findMinMaxPrice(SearchData $search): array
+    {
+        return $this->findMinMax($search, 'price');
+    }
+
+    public function findMinMaxKms(SearchData $search): array
+    {
+        return $this->findMinMax($search, 'kilometers');
+    }
+
+    public function findMinMaxDate(SearchData $search): array
+    {
+        $results = $this->getSearchQuery($search, false, false, true)
+            ->select('MIN(p.circulationAt) as minDate, MAX(p.circulationAt) as maxDate')
+            ->getQuery()
+            ->getResult();
+        return [$results[0]['minDate'], $results[0]['maxDate']];
+    }
+
+    private function findMinMax(SearchData $search, string $field): array
+    {
+        $results = $this->getSearchQuery($search, true, false, false)
+            ->select("MIN(p.$field) as minValue, MAX(p.$field) as maxValue")
+            ->getQuery()
+            ->getScalarResult();
+        return [(int)$results[0]['minValue'], (int)$results[0]['maxValue']];
+    }
+
+    private function getSearchQuery(SearchData $search, bool $ignorePrice = false, bool $ignoreKms = false, bool $ignoreDate = false): QueryBuilder
+    {
+        $query = $this->createQueryBuilder('p')
+            ->join('p.category', 'c')
+            ->join('p.model', 'm')
+            ->select('c, m, p');
+
+        if (!empty($search->q)) {
+            $query->andWhere('p.name LIKE :q')
+                ->setParameter('q', "%{$search->q}%");
+        }
+
+        $this->addPriceFilters($query, $search, $ignorePrice);
+        $this->addKmsFilters($query, $search, $ignoreKms);
+        $this->addDateFilters($query, $search, $ignoreDate);
+        $this->addCategoryAndModelFilters($query, $search);
+
+        return $query->orderBy('p.name', 'ASC');
+    }
+
+    private function addPriceFilters(QueryBuilder $query, SearchData $search, bool $ignore): void
+    {
+        if (!$ignore) {
+            if (!empty($search->minPrice)) {
+                $min = $search->minPrice * 100;
+                $query->andWhere('p.price >= :min')->setParameter('min', $min);
+            }
+            if (!empty($search->maxPrice)) {
+                $max = $search->maxPrice * 100;
+                $query->andWhere('p.price <= :max')->setParameter('max', $max);
+            }
+        }
+    }
+
+    private function addKmsFilters(QueryBuilder $query, SearchData $search, bool $ignore): void
+    {
+        if (!$ignore) {
+            if (!empty($search->minKms)) {
+                $query->andWhere('p.kilometers >= :minKms')->setParameter('minKms', $search->minKms);
+            }
+            if (!empty($search->maxKms)) {
+                $query->andWhere('p.kilometers <= :maxKms')->setParameter('maxKms', $search->maxKms);
+            }
+        }
+    }
+
+    private function addDateFilters(QueryBuilder $query, SearchData $search, bool $ignore): void
+    {
+        if (!$ignore) {
+            if (!empty($search->minCirculationAt)) {
+                $query->andWhere('YEAR(p.circulationAt) >= YEAR(:minDate)')->setParameter('minDate', $search->minCirculationAt);
+            }
+            if (!empty($search->maxCirculationAt)) {
+                $query->andWhere('YEAR(p.circulationAt) <= YEAR(:maxDate)')->setParameter('maxDate', $search->maxCirculationAt);
+            }
+        }
+    }
+
+    private function addCategoryAndModelFilters(QueryBuilder $query, SearchData $search): void
+    {
+        if (!empty($search->categories)) {
+            $query->andWhere('c.id IN (:categories)')->setParameter('categories', $search->categories);
+        }
+        if (!empty($search->model)) {
+            $query->andWhere('m.id IN (:model)')->setParameter('model', $search->model);
+        }
+    }
 }

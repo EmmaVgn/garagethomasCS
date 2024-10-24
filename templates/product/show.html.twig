@@ -1,0 +1,117 @@
+{% extends "base.html.twig" %}
+{% block title %}
+	Page de :
+	{{ product.name }}
+{% endblock %}
+{% block body %}
+	<ol class="breadcrumb">
+		<li class="breadcrumb-item">
+			<a href="{{ path('homepage') }}">Accueil</a>
+		</li>
+		<li class="breadcrumb-item">
+			<a href="{{ path('product_category', {'slug':product.category.slug})}}">{{ product.category.name }}</a>
+		</li>
+		<li class="breadcrumb-item active">{{ product.name }}</li>
+	</ol>
+	<h1>{{ product.name }}
+		({{ product.price | amount }})</h1>
+	<div class="row">
+		<div class="col-md-8">
+			<div id="carouselSingleVehiculeIndicators" class="carousel slide carousel-fade">
+				<div class="carousel-inner">
+					{% for image in product.images %}
+						<div class="carousel-item {% if loop.first %}active{% endif %}">
+							<img src="{{ vich_uploader_asset(image, 'imageFile') }}" alt="{{ product.name }}" class="img-fluid">
+						</div>
+					{% endfor %}
+				</div>
+				<button class="carousel-control-prev" type="button" data-bs-target="#carouselSingleVehiculeIndicators" data-bs-slide="prev">
+					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Previous</span>
+				</button>
+				<button class="carousel-control-next" type="button" data-bs-target="#carouselSingleVehiculeIndicators" data-bs-slide="next">
+					<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					<span class="visually-hidden">Next</span>
+				</button>
+			</div>
+			<div class="w-100">
+				<div class="card">
+					<div class="card-body pt-3" id="borderedTabs">
+						<ul class="nav nav-tabs nav-tabs-bordered">
+							<li class="nav-item">
+								<button class="nav-link active" data-bs-toggle="tab" data-bs-target="#features">Caractéristiques</button>
+							</li>
+							<li class="nav-item">
+								<button class="nav-link" data-bs-toggle="tab" data-bs-target="#funding">Financement</button>
+							</li>
+						</ul>
+						<div class="tab-content pt-2">
+							<div class="tab-pane fade show active features" id="features">
+								<h5 class="card-title">Détail du véhicule</h5>
+								<p class="small fst-italic">{{ product.name }}</p>
+								<div class="row">
+									<div class="col-lg-3 col-md-4 label ">Marque :</div>
+									<div class="col-lg-9 col-md-8 fw-bold">{{ product.model.name }}</div>
+								</div>
+								<div class="row">
+									<div class="col-lg-3 col-md-4 label">Kilométrage :</div>
+									<div class="col-lg-9 col-md-8 fw-bold">{{ product.kilometers }}
+										Kms</div>
+								</div>
+								<div class="row">
+									<div class="col-lg-3 col-md-4 label">Année :</div>
+									<div class="col-lg-9 col-md-8 fw-bold">{{ product.circulationAt | date('Y') }}</div>
+								</div>
+								<div class="row">
+									<div class="col-lg-3 col-md-4 label">Type de véhicule :</div>
+									<div class="col-lg-9 col-md-8 fw-bold">{{ product.category.name }}</div>
+								</div>
+								<div class="row">
+									<div class="col-lg-3 col-md-4 label">Carburant :</div>
+									<div class="col-lg-9 col-md-8 fw-bold">{{ product.energy }}</div>
+								</div>
+								<div class="row">
+									<div class="col-lg-3 col-md-4 label">Mise en circulation :</div>
+									<div class="col-lg-9 col-md-8 fw-bold">{{ product.circulationAt | date("d/m/Y") }}</div>
+								</div>
+								<div class="row mt-4">
+									<h5 class="card-title">A propos de ce véhicule</h5>
+									<p>{{ product.shortDescription | raw | nl2br  }}</p>
+								</div>
+							</div>
+							<div class="tab-pane fade funding" id="funding">
+								<h5 class="card-title">Louez ou financez votre voiture d'occasion en toute sérénité</h5>
+								<p>Plusieurs possibilités s'offrent à vous pour financer votre nouvelle voiture ! Vous pouvez soit opter pour la location avec le service LOA (Location avec Option d'Achat), soit financer en crédit. Dans tous les cas, simulez ci-dessous votre financement puis renseignez notre formulaire de financement pour obtenir une réponse de principe directement en ligne !</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4">
+			<div class="card">
+				<div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
+					<h3 class="text-center">{{ product.name }}</h3>
+					<div class="features mt-2 d-flex">
+						<div class="d-flex flex-column align-items-center me-2">
+							<i class="fs-3 fa-solid fa-gas-pump"></i>
+							{{ product.energy }}
+						</div>
+						<div class="d-flex flex-column align-items-center me-2">
+							<i class="fs-3 fa-solid fa-gauge"></i>
+							{{ product.kilometers }}
+							Kms
+						</div>
+						<div class="d-flex flex-column align-items-center me-2">
+							<i class="fs-3 fa-regular fa-calendar-days"></i>
+							{{ product.circulationAt | date('Y') }}
+						</div>
+					</div>
+					<div class="d-flex mt-4 fs-2 border-top fw-bold">
+						{{ product.price | amount }}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

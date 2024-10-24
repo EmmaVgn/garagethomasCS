@@ -72,7 +72,8 @@ class ProductCrudController extends AbstractCrudController
             TextEditorField::new('shortDescription', 'Description courte du véhicule')->hideOnIndex(),
             AssociationField::new('category', 'Catégorie du véhicule'),
             AssociationField::new('model', 'Marque du véhicule')
-                ->autocomplete()
+                ->autocomplete(),
+            AssociationField::new('type', 'Modèle du véhicule')->autocomplete()->hideOnIndex(),
         ];
     }
 

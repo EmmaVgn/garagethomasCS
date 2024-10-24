@@ -14,12 +14,12 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
 
 class CategoryCrudController extends AbstractCrudController
 {
-    protected $slugger;
+    // protected $slugger;
 
-    public function __construct(SluggerInterface $slugger)
-    {
-        $this->slugger = $slugger;
-    }
+    // public function __construct(SluggerInterface $slugger)
+    // {
+    //     $this->slugger = $slugger;
+    // }
 
     public static function getEntityFqcn(): string
     {
@@ -46,24 +46,23 @@ class CategoryCrudController extends AbstractCrudController
         ];
     }
 
-    public function persistEntity(EntityManagerInterface $entityManager, $entityInstance): void
-    {
-        $this->sluggerName($entityInstance);
-        // Apply ucfirst to relevant fields
-        $entityInstance->setName(ucfirst($entityInstance->getName())); 
-        parent::persistEntity($entityManager, $entityInstance);
-    }
+    // public function persistEntity(EntityManagerInterface $entityManager, $entityInstance): void
+    // {
+    //     $this->sluggerName($entityInstance);
+    //     // Apply ucfirst to relevant fields
+    //     $entityInstance->setName(ucfirst($entityInstance->getName())); 
+    //     parent::persistEntity($entityManager, $entityInstance);
+    // }
 
-    public function updateEntity(EntityManagerInterface $entityManager, $entityInstance): void
-    {
-        $this->sluggerName($entityInstance);
-        $entityInstance->setName(ucfirst($entityInstance->getName())); 
-        parent::updateEntity($entityManager, $entityInstance);
-    }
+    // public function updateEntity(EntityManagerInterface $entityManager, $entityInstance): void
+    // {
+    //     $this->sluggerName($entityInstance);
+    //     $entityInstance->setName(ucfirst($entityInstance->getName())); 
+    //     parent::updateEntity($entityManager, $entityInstance);
+    // }
 
-    private function sluggerName(Category $category): void
-    {
-        $category->setSlug(strtolower($this->slugger->slug($category->getName())));
-    }
-
+    // private function sluggerName(Category $category): void
+    // {
+    //     $category->setSlug(strtolower($this->slugger->slug($category->getName())));
+    // }
 }

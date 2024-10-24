@@ -23,13 +23,6 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
 class ProductCrudController extends AbstractCrudController
 {
-    protected $slugger;
-
-    public function __construct(SluggerInterface $slugger)
-    {
-        $this->slugger = $slugger;
-    }
-
     public static function getEntityFqcn(): string
     {
         return Product::class;
@@ -54,12 +47,13 @@ class ProductCrudController extends AbstractCrudController
             ->setCurrency('EUR')
             ->setTextAlign('left'),
             NumberField::new('kilometers', 'Kilométrage du véhicule')->setNumDecimals(0),
-            ChoiceField::new('energy', 'Motorisation du véhicule')->setChoices([
-                'Essence' => 'Essence',
-                'Diesel' => 'Diesel',
-                'Hybride' => 'Hybride',
-                'Electrique' => 'Electrique',
-            ]),
+            // ChoiceField::new('energy', 'Motorisation du véhicule')->setChoices([
+            //     'Essence' => 'Essence',
+            //     'Diesel' => 'Diesel',
+            //     'Hybride' => 'Hybride',
+            //     'Electrique' => 'Electrique',
+            // ]),
+            AssociationField::new('energy', 'Motorisation du véhicule')->autocomplete(),
             DateField::new('circulationAt', 'Date de mise en circulation du véhicule')
             ->setFormType(CustomDateType::class)
             ->setFormat('yyyy')
@@ -81,33 +75,8 @@ class ProductCrudController extends AbstractCrudController
                 'Manuelle' => 'Manuelle',
             ]),
             TextField::new('fiscalhorsepower', 'Puissance fiscale')->hideOnIndex(),
-            ChoiceField::new('critair', 'CRIT\'AIR')->hideOnIndex()->setChoices([
-                'Niveau 0' => 'Niveau 0',
-                'Niveau 1' => 'Niveau 1',
-                'Niveau 2' => 'Niveau 2',
-                'Niveau 3' => 'Niveau 3',
-            ]),
+            AssociationField::new('critair', 'CRIT\'AIR')->hideOnIndex()->autocomplete(),
         ];
-    }
-
-    public function persistEntity(EntityManagerInterface $entityManager, $entityInstance): void
-    {
-        $this->sluggerName($entityInstance);
-        // Apply ucfirst to relevant fields
-        $entityInstance->setName(ucfirst($entityInstance->getName()));
-        parent::persistEntity($entityManager, $entityInstance);
-    }
-
-    public function updateEntity(EntityManagerInterface $entityManager, $entityInstance): void
-    {
-        $this->sluggerName($entityInstance);
-        $entityInstance->setName(ucfirst($entityInstance->getName()));
-        parent::updateEntity($entityManager, $entityInstance);
-    }
-
-    private function sluggerName(Product $product): void
-    {
-        $product->setSlug(strtolower($this->slugger->slug($product->getName())));
     }
     
 }

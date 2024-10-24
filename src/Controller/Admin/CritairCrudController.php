@@ -2,39 +2,37 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Type;
-use Doctrine\ORM\EntityManagerInterface;
+use App\Entity\Critair;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
-use Symfony\Component\String\Slugger\SluggerInterface;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
-class TypeCrudController extends AbstractCrudController
+class CritairCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
     {
-        return Type::class;
+        return Critair::class;
     }
 
     public function configureCrud(Crud $crud): Crud
     {
         return $crud
-            ->setPageTitle('index', 'Modèles')
-            ->setPageTitle('new', 'Ajouter un modèle')
-            ->setDefaultSort(['name' => 'ASC'])
+            ->setPageTitle('index', 'Crit\'Air')
+            ->setPageTitle('new', 'Ajouter un Crit\'air')
+            ->setDefaultSort(['id' => 'ASC'])
             ->setPaginatorPageSize(10)
-            ->setEntityLabelInSingular('un Modèle');
+            ->setEntityLabelInSingular('une Crit\'air');
     }
 
     public function configureFields(string $pageName): iterable
     {
         return [
             IdField::new('id', 'ID')->onlyOnIndex(),
-            TextField::new('name', 'Nom du modèle')
-            ->setFormTypeOptions(['attr' => ['placeholder' => 'Ex: A3 SPORTBACK']]),
+            TextField::new('name', 'Niveau du Crit\'Air')
+            ->setFormTypeOptions(['attr' => ['placeholder' => 'Ex: Niveau 0']]),
             TextField::new('slug', 'Slug')->onlyOnIndex(),
         ];
     }
-
+    
 }

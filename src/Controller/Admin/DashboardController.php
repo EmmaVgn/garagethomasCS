@@ -4,9 +4,12 @@ namespace App\Controller\Admin;
 
 use App\Entity\Type;
 use App\Entity\User;
+use App\Entity\Color;
 use App\Entity\Model;
+use App\Entity\Energy;
 use App\Entity\Images;
 use App\Entity\Contact;
+use App\Entity\Critair;
 use App\Entity\Product;
 use App\Entity\Category;
 use Symfony\Component\HttpFoundation\Response;
@@ -46,6 +49,8 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Modèles', 'fas fa-trademark', Model::class);
         yield MenuItem::linkToCrud('Modèles', 'fas fa-car-battery', Type::class);
         yield MenuItem::linkToCrud('Couleurs', 'fas fa-palette', Color::class);
+        yield MenuItem::linkToCrud('Motorisation', 'fas fa-gas-pump', Energy::class);
+        yield MenuItem::linkToCrud('Crit\'Air', 'fas fa-biohazard', Critair::class);
         yield MenuItem::linkToCrud('Messages', 'fas fa-envelope', Contact::class);
         yield MenuItem::linkToCrud('Images', 'fas fa-image', Images::class);
         

@@ -15,13 +15,6 @@ use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
 class ColorCrudController extends AbstractCrudController
 {
-    protected $slugger;
-
-    public function __construct(SluggerInterface $slugger)
-    {
-        $this->slugger = $slugger;
-    }
-    
     public static function getEntityFqcn(): string
     {
         return Color::class;
@@ -52,26 +45,6 @@ class ColorCrudController extends AbstractCrudController
             ->setBasePath('/images/colors')
             ->onlyOnIndex(),
         ];
-    }
-
-    public function persistEntity(EntityManagerInterface $entityManager, $entityInstance): void
-    {
-        $this->sluggerName($entityInstance);
-        // Apply ucfirst to relevant fields
-        $entityInstance->setName(ucfirst($entityInstance->getName())); 
-        parent::persistEntity($entityManager, $entityInstance);
-    }
-
-    public function updateEntity(EntityManagerInterface $entityManager, $entityInstance): void
-    {
-        $this->sluggerName($entityInstance);
-        $entityInstance->setName(ucfirst($entityInstance->getName())); 
-        parent::updateEntity($entityManager, $entityInstance);
-    }
-
-    private function sluggerName(Color $color): void
-    {
-        $color->setSlug(strtolower($this->slugger->slug($color->getName())));
     }
     
 }

@@ -214,7 +214,7 @@ a:hover {
 }
 
 .footer-section ul li a {
-  color: #ffffff;
+  color: #ffffff !important;
   text-decoration: none;
   transition: color 0.3s;
 }
@@ -228,7 +228,7 @@ a:hover {
 }
 
 .social-icons a {
-  color: #ffffff;
+  color: #ffffff !important;
   margin-right: 15px;
   font-size: 24px;
   transition: color 0.3s;
@@ -290,4 +290,26 @@ a:hover {
 
 .text-custom {
   color: #1c5634;
+}
+
+/*--------------------------------------------------------------
+    Page de contact
+--------------------------------------------------------------*/
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+.fade-in {
+  animation: fadeIn 1.5s ease-in-out;
+}
+.map-container iframe {
+  border-radius: 0.5rem;
+}
+
+.map-contact {
+  margin-left: 50px;
 }

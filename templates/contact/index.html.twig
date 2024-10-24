@@ -1,0 +1,87 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nous contacter
+{% endblock %}
+
+{% block body %}
+	<div class="container mt-5">
+		<h1 class="text-center mb-5 fade-in" style="animation: fadeIn 1s ease-in-out;">Nous contacter</h1>
+
+		<!-- Section avec formulaire à gauche et carte à droite, avec même hauteur -->
+		<div
+			class="row justify-content-center mb-5">
+			<!-- Conteneur flex pour ajuster les hauteurs -->
+			<div
+				class="col-md-10 d-flex">
+				<!-- Colonne Formulaire -->
+				<div class="col-md-6 d-flex flex-column">
+					<div class="card shadow-lg p-4 rounded flex-fill">
+						<h2 class="text-center mb-4">Envoyez-nous un message</h2>
+						{{ form_start(form) }}
+						{{ form_errors(form) }}
+
+						<div class="row">
+							<div class="col-md-6 mb-3">
+								{{ form_row(form.firstname, {'attr': {'class': 'form-control', 'placeholder': 'Prénom'}}) }}
+							</div>
+							<div class="col-md-6 mb-3">
+								{{ form_row(form.lastname, {'attr': {'class': 'form-control', 'placeholder': 'Nom'}}) }}
+							</div>
+							<div class="col-md-6 mb-3">
+								{{ form_row(form.phone, {'attr': {'class': 'form-control', 'placeholder': 'Téléphone'}}) }}
+							</div>
+							<div class="col-md-6 mb-3">
+								{{ form_row(form.email, {'attr': {'class': 'form-control', 'placeholder': 'Email'}}) }}
+							</div>
+							<div class="col-md-12 mb-3">
+								{{ form_row(form.content, {'attr': {'class': 'form-control', 'placeholder': 'Votre message...'}}) }}
+							</div>
+						</div>
+
+						<button class="btn btn-success w-100 mt-3 mb-4" type="submit" style="font-weight: bold; transition: background-color 0.3s ease;">
+							<span>Envoyer le message</span>
+						</button>
+						{{ form_end(form) }}
+					</div>
+				</div>
+
+				<!-- Colonne Carte Google -->
+				<div class="map-contact col-md-6 d-flex flex-column">
+					<div class="map-container shadow-lg rounded flex-fill" style="overflow: hidden;">
+						<h2 class="text-center mb-4">Nous trouver</h2>
+						<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.999924412654!2d2.2922921156744045!3d48.85884417928792!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66fdebebf7ed5%3A0x428356742f429d!2sTour%20Eiffel!5e0!3m2!1sfr!2sfr!4v1619129129384!5m2!1sfr!2sfr" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Section Horaires d'ouverture moderne -->
+		<div class="row justify-content-center">
+			<div class="col-md-10">
+				<div class="card bg-light p-4 rounded shadow mb-4">
+					<h2 class="text-center mb-4">Nos horaires d'ouverture</h2>
+					<div class="row text-center">
+						<div class="col-md-4 mb-3">
+							<div class="p-3 border rounded shadow-sm bg-white">
+								<h4 class="mb-0">Lundi au Vendredi</h4>
+								<p class="lead">08:00 - 18:00</p>
+							</div>
+						</div>
+						<div class="col-md-4 mb-3">
+							<div class="p-3 border rounded shadow-sm bg-white">
+								<h4 class="mb-0">Samedi</h4>
+								<p class="lead">09:00 - 12:00</p>
+							</div>
+						</div>
+						<div class="col-md-4 mb-3">
+							<div class="p-3 border rounded shadow-sm bg-white">
+								<h4 class="mb-0">Dimanche</h4>
+								<p class="lead">Fermé</p>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

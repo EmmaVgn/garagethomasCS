@@ -30,10 +30,16 @@ class Images
     #[ORM\JoinColumn(nullable: false)]
     private ?Product $product = null;
 
+    public function __toString(): string
+    {
+        return $this->imageName;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
     }
+
     /**
      * If manually uploading a file (i.e. not using Symfony Form) ensure an instance
      * of 'UploadedFile' is injected into this setter to trigger the update. If this
@@ -52,34 +58,38 @@ class Images
             $this->updatedAt = new \DateTimeImmutable();
         }
     }
+
     public function getImageFile(): ?File
     {
         return $this->imageFile;
     }
+
     public function getImageName(): ?string
     {
         return $this->imageName;
     }
+
     public function setImageName(string $imageName): static
     {
         $this->imageName = $imageName;
         return $this;
     }
+
     public function getUpdatedAt(): ?\DateTimeImmutable
     {
         return $this->updatedAt;
     }
+
     public function getProduct(): ?Product
     {
         return $this->product;
     }
+
     public function setProduct(?Product $product): static
     {
         $this->product = $product;
+        
         return $this;
     }
-    public function __toString(): string
-    {
-        return $this->imageName;
-    }
+
 }

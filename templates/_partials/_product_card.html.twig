@@ -22,6 +22,6 @@
 			{{ p.shortDescription|raw|nl2br|striptags|u.truncate(150, '...') }}
 		</p>
 		<hr>
-		<a href="{{ path('product_show', {'category_slug': p.category.slug, 'slug': p.slug}) }}" class="btn btn-primary btn-sm">En savoir plus</a>
+		<a href="{{ path('product_show', {'category_slug': p.category.slug, 'slug': p.slug}) }}" class="btn">En savoir plus</a>
 	</div>
 </div>

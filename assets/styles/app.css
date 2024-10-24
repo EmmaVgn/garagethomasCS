@@ -689,3 +689,137 @@ input[type="text"] {
         flex-basis: 50%;
       }
     }
+
+
+    /*--------------------------------------------------------------
+  # Services (pictos)
+  --------------------------------------------------------------*/
+.avt_container {
+  display: flex;
+  text-align: center;
+  justify-content: space-around;
+  align-items: center;
+  margin: auto;
+  width: 73%;
+  padding: 1.5rem 0;
+}
+
+.avt_title {
+  padding: 0 0, 4rem;
+  position: relative;
+  z-index: 3;
+  text-transform: uppercase;
+  margin-bottom: 0;
+  margin-top: 0, 5rem;
+}
+
+.avt_subtitle {
+  position: relative;
+  top: -0, 5rem;
+}
+
+/*--------------------------------------------------------------
+  #search (product)
+  --------------------------------------------------------------*/
+.brand-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.brand-container ul {
+    display: flex;
+    justify-content: space-around;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-wrap: wrap; /* Permet le wrap sur plusieurs lignes */
+}
+
+.pw-vehicle-search-shape-brand-list {
+    margin-top: 1rem;
+    padding-bottom: 4rem;
+    border-bottom: 2px dotted #d6d6d6;
+}
+
+.pw-vehicle-search-shape-brand-list .brand-model-list-container {
+    display: flex;
+    flex-direction: column; /* Alignement en colonne par défaut */
+    align-items: center;
+}
+
+.pw-vehicle-search-shape-brand-list .brand-model-list-container h3 {
+    text-align: center;
+    font-size: 2rem; /* Taille de police relative */
+}
+
+.pw-vehicle-search-shape-brand-list .brand-model-list-container ul {
+  display: none; /* Cacher les éléments <ul> */
+}
+
+
+.pw-vehicle-search-shape-brand-list .brand-model-list-container .shape-list ul {
+    display: flex;
+    flex-wrap: wrap; /* Permet le wrap */
+    justify-content: center;
+}
+
+.pw-vehicle-search-shape-brand-list .brand-model-list-container .shape-list ul li {
+    flex: 1 1 45%; /* Occupe 45% de la largeur, s'adapte à l'espace disponible */
+    max-width: 200px; /* Limite la largeur max */
+    padding: 1rem; /* Espacement interne */
+    text-align: center;
+}
+
+.pw-vehicle-search-shape-brand-list .brand-model-list-container .brand-list ul {
+    display: flex;
+    flex-wrap: wrap; /* Permet le wrap */
+    justify-content: center;
+}
+
+.pw-vehicle-search-shape-brand-list .brand-model-list-container .brand-list ul li {
+    flex: 1 1 30%; /* Occupe 30% de la largeur */
+    max-width: 150px; /* Limite la largeur max */
+    padding: 1rem; /* Espacement interne */
+    text-align: center;
+}
+
+/* Media Queries */
+@media (min-width: 640px) {
+    .pw-vehicle-search-shape-brand-list .brand-model-list-container {
+        flex-direction: row; /* Aligne en ligne sur les grands écrans */
+        justify-content: space-between;
+    }
+}
+
+@media (min-width: 960px) {
+    .pw-vehicle-search-shape-brand-list .brand-model-list-container h3 {
+        font-size: 3rem; /* Taille de police plus grande */
+    }
+
+    .pw-vehicle-search-shape-brand-list .brand-model-list-container .shape-list ul li,
+    .pw-vehicle-search-shape-brand-list .brand-model-list-container .brand-list ul li {
+        flex: 1 1 20%; /* Occupe 20% de la largeur sur grands écrans */
+    }
+}
+
+@media (min-width: 1280px) {
+    .pw-vehicle-search-shape-brand-list .brand-model-list-container .shape-list {
+        width: 75%;
+    }
+
+    .pw-vehicle-search-shape-brand-list .brand-model-list-container .brand-list {
+        width: 25%;
+    }
+}
+
+.hide-onmobile {
+  display: block; /* Affiche par défaut sur les écrans plus grands */
+}
+
+@media (max-width: 639px) {
+  .hide-onmobile {
+      display: none; /* Masque uniquement sur les appareils de 639px et moins */
+  }
+}

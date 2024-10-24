@@ -1,0 +1,57 @@
+<div class="brand-list">
+	<h3>Marques</h3>
+	<ul class="hide-onmobile">
+		<li class="alfa">
+			<a href="/brand/alfa-romeo">
+				<img src="{{ asset('img/AlfaLogo.png') }}" alt="Alfa Romeo">
+			</a>
+		</li>
+		<li class="citroen">
+			<a href="/brand/citroen">
+				<img src="{{ asset('img/citroenLogo.jpg') }}" alt="Citroen">
+			</a>
+		</li>
+		<li class="ds">
+			<a href="/brand/ds">
+				<img src="{{ asset('img/DSLogo.png') }}" alt="DS">
+			</a>
+		</li>
+		<li class="fiat">
+			<a href="/brand/fiat">
+				<img src="{{ asset('img/FiatLogo.png') }}" alt="Fiat">
+			</a>
+		</li>
+		<li class="peugeot">
+			<a href="/brand/peugeot">
+				<img src="{{ asset('img/PeugeotLogo.png') }}" alt="Peugeot">
+			</a>
+		</li>
+		<li class="ford">
+			<a href="/brand/ford">
+				<img src="{{ asset('img/FordLogo.png') }}" alt="Ford">
+			</a>
+		</li>
+		<li class="mazda">
+			<a href="/brand/mazda">
+				<img src="{{ asset('img/MazdaLogo.png') }}" alt="Mazda">
+			</a>
+		</li>
+		<li class="renault">
+			<a href="/brand/renault">
+				<img src="{{ asset('img/Symbole-Renault.jpg') }}" alt="Renault">
+			</a>
+		</li>
+	</ul>
+	<div class="show-onlymobile brand-list--mobile">
+		<select class="form-select" id="brandSelect">
+			<option value="_none">Choisir une marque</option>
+			<option value="/brand/alfa-romeo">Alfa Romeo</option>
+			<option value="/brand/citroen">Citroen</option>
+			<option value="/brand/ds">DS</option>
+			<option value="/brand/renault">Renault</option>
+			<option value="/brand/mazda">Mazda</option>
+			<option value="/brand/ford">Ford</option>
+			<option value="/brand/fiat">Fiat</option>
+		</select>
+	</div>
+</div>

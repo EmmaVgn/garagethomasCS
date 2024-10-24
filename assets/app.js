@@ -68,3 +68,14 @@ if (alert) {
         }, 500); // After the fade-out animation (0.5 second)
     }, 5000); // After 5 seconds
 }
+
+//Homepage marques
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('brandSelect').addEventListener('change', function() {
+        const selectedValue = this.value;
+        if (selectedValue) {  // Vérifie si une marque a été choisie
+            window.location.href = selectedValue;  // Redirection vers le lien
+        }
+    });
+});
+

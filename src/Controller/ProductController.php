@@ -80,7 +80,6 @@ class ProductController extends AbstractController
                 'totalItems' => $totalItems,
             ]);
         }
-        
         return $this->render('product/display.html.twig', [
             'products' => $products,
             'form' => $form,

@@ -5,6 +5,26 @@
 {% endblock %}
 
 {% block body %}
-	<h1>Bienvenu au garage Thomas!</h1>
-	<p>Vous êtes sur le site du garage Thomas, le meilleur garage de la région!</p>
+	<section class="main-container">
+
+		{% include "product/_search.html.twig" %}
+
+		<h1>Nos véhicules du mois</h1>
+		<div class="row">
+			{% for p in products %}
+				<div class="col">
+					{% include "_partials/_product_card.html.twig" %}
+				</div>
+			{% endfor %}
+		</div>
+
+		<hr>
+		{% include "_partials/_picto.html.twig"%}
+		<hr>
+
+
+		<div class="row mt-5"></div>
+
+	</section>
+
 {% endblock %}

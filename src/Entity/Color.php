@@ -38,7 +38,7 @@ class Color
     ],
         mimeTypesMessage: 'Le type MIME du fichier n\'est pas valide ({{ type }}). Les formats autorisés sont {{ types }}'
     )]
-
+    
     #[Vich\UploadableField(mapping: 'color_images', fileNameProperty: 'imageName')]
     private ?File $imageFile = null;
 
@@ -59,7 +59,6 @@ class Color
     public function __toString(): string
     {
         return $this->name;
-
         return $this->imageName;
     }
 
@@ -76,8 +75,10 @@ class Color
     public function setName(string $name): static
     {
         $this->name = $name;
+
         return $this;
     }
+
     public function getSlug(): ?string
     {
         return $this->slug;
@@ -86,6 +87,7 @@ class Color
     public function setSlug(string $slug): static
     {
         $this->slug = $slug;
+
         return $this;
     }
 
@@ -101,6 +103,7 @@ class Color
     public function setImageFile(?File $imageFile = null): void
     {
         $this->imageFile = $imageFile;
+
         if (null !== $imageFile) {
             // It is required that at least one field changes if you are using doctrine
             // otherwise the event listeners won't be called and the file is lost
@@ -137,6 +140,7 @@ class Color
             $this->products->add($product);
             $product->setColor($this);
         }
+
         return $this;
     }
 
@@ -148,7 +152,7 @@ class Color
                 $product->setColor(null);
             }
         }
+
         return $this;
     }
-    
 }

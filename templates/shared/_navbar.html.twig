@@ -12,13 +12,13 @@
 					<a class="nav-link{% if app.request.attributes.get('_route') == '_RouteName' %} active{% endif %}" href="{{ path('homepage') }}">Accueil</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link{% if app.request.attributes.get('_route') == 'product_display' %} active{% endif %}" href="#">Achat véhicules d'occasion</a>
+					<a class="nav-link{% if app.request.attributes.get('_route') == 'product_display' %} active{% endif %}" href="{{ path('product_display')}}">Achat véhicules d'occasion</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link{% if app.request.attributes.get('_route') == 'service' %} active{% endif %}" href="#">Services</a>
+					<a class="nav-link{% if app.request.attributes.get('_route') == 'service' %} active{% endif %}" href="{{ path('service')}}">Services</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link{% if app.request.attributes.get('_route') == 'contact' %} active{% endif %}" href="#">Contactez-nous</a>
+					<a class="nav-link{% if app.request.attributes.get('_route') == 'contact' %} active{% endif %}" href="{{ path('contact_index')}}">Contactez-nous</a>
 				</li>
 			</ul>
 			<ul class="navbar-nav">

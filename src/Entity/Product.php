@@ -74,7 +74,7 @@ class Product
     #[ORM\ManyToOne(inversedBy: 'products')]
     private ?Energy $energy = null;
 
-    #[ORM\ManyToOne(inversedBy: 'product')]
+    #[ORM\ManyToOne(inversedBy: 'products')]
     private ?Critair $critair = null;
 
     public function __construct()
@@ -274,6 +274,7 @@ class Product
     public function setEnergy(?Energy $energy): static
     {
         $this->energy = $energy;
+
         return $this;
     }
 

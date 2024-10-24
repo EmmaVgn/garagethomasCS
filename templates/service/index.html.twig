@@ -1,0 +1,113 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+	<main role="main">
+		<img
+		src=" {{ asset('img/cover.jpg')}}" class="img-fluid" alt="...">
+
+		<!-- START THE FEATURETTES -->
+		<hr class="featurette-divider">
+		<div class="row featurette">
+			<div class="col-md-7">
+				<h2 class="featurette-heading">[Quarante ans de passion
+					<span class="text-muted">
+						au service de votre véhicule.</span>
+				</h2>
+				<p class="lead">
+					Depuis 40 ans, à Toulouse, votre garagiste dévoué se réveille chaque jour avec le même désir : celui de prendre soin de votre véhicule.		
+																																																																																																																																																																																																																																																Nos techniciens certifiés sont formés pour travailler sur toutes les marques et tous les modèles de véhicules. Ils utilisent des outils de diagnostic pour 
+																																																																																																																																																																																																																																																identifier rapidement et précisément les problèmes concernant votre véhicule.
+					<br>
+					Quels sont nos services d’entretien ?
+					<ul class="lead">
+						<li>Des vidanges d’huile régulières.</li>
+						<li>Des contrôles de pression de pneus.</li>
+						<li>Des remplacements de filtres à air.</li>
+						<li>Des inspections de sécurité.</li>
+					</ul><br>
+				</p>
+				<p class="lead">
+					Nous utilisons des pièces de rechange d’excellente qualité pour garantir une longue durée de vie à votre véhicule.
+					<br>
+					Votre véhicule mérite
+					<span class="text-danger lead">le meilleur
+					</span>
+					entretien. Faites confiance à notre équipe de professionnels pour prendre soin de votre voiture.
+					<br>Vous avez des questions sur nos services d’entretien ? N’hésitez pas à nous contacter. Nous serons ravis de vous aider.
+				</p>
+			</div>
+			<div class="col-md-5">
+				<img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="500x500" src="{{ asset('img/garagiste-services-proposes-par.jpg.webp')}} " data-holder-rendered="true" style="width: 500px; height: 500px;">
+			</div>
+		</div>
+		<hr class="featurette-divider">
+		<div class="row featurette">
+			<div class="col-md-7 order-md-2">
+				<h2 class="featurette-heading">
+					[Obtenez votre devis gratuit en moins de 72 h :
+					<span class="text-muted">rapidité et efficacité assurées</span>
+				</h2>
+				<p class="lead">Besoin urgent d’un garagiste ? Au Garage Thoma, votre véhicule est notre priorité.
+																																																																																																																																																																																																								Notre garage vous propose
+					<span class="text-danger">un devis gratuit en moins de 72 heures.
+					</span>
+					Pas de surprise : nos prix sont justes et transparents.
+					<br>Nos mécaniciens aguerris vous proposent des solutions rapides et efficaces pour toute
+					<span>
+						réparation auto.</span>
+					<br>
+					<br>Confiez-nous votre automobile et roulez sereinement sur les routes de la Charente ! Avec nous, l’entretien de votre véhicule devient une expérience agréable plutôt qu’une corvée.
+					<br>
+					<br>N’hésitez pas à nous joindre au numéro indiqué sur notre site ou à venir nous rendre visite directement dans notre garage à Toulouse</p>
+			</div>
+			<div class="col-md-5 order-md-1">
+				<img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="500x500" src="{{ asset('img/bon-garagiste.jpg') }}" data-holder-rendered="true" style="width: 500px; height: 500px;">
+			</div>
+		</div>
+
+		<hr class="featurette-divider">
+
+		<div class="row featurette">
+			<div class="col-md-7">
+				<h2 class="featurette-heading">[Une réparation sur votre voiture ?
+					<span class="text-muted">Profitez d’un véhicule de prêt</span>
+				</h2>
+				<p class="lead">Nous innovons pour votre confort. Un souci avec votre voiture ? Pas d’inquiétude : notre garage dispose d’un parc de véhicules de prêt.	
+																																																																																																																																																																														Nous innovons pour votre confort. Un souci avec votre voiture ? Pas d’inquiétude : notre garage dispose d’un parc de véhicules de prêt.
+																																																																																																																																																																										Roulez en toute tranquillité pendant l’entretien ou la réparation de votre automobile.
+																																																																																																																																																																										Notre priorité ? Votre mobilité sans interruption !
+					<br>
+					<br>Dans notre garage, l’excellence ne se résume pas uniquement aux pneus ou aux réparations auto, elle est dans chaque détail qui facilite votre quotidien.
+					<br>
+					<br>Si vous souhaitez investir dans un véhicule, venez nous rendre visite directement dans notre parc automobile situé au Balma (31130) à l’adresse suivante : 43 Av. des Aérostiers.
+					<br>
+					<br>
+					<a class="nav-link" href="{{ path('product_display') }}">
+						Découvrez nos véhicules en vente pour particuliers et professionnels.
+					</a>
+				</p>
+			</div>
+			<div class="col-md-5">
+				<img class="featurette-image img-fluid mx-auto" data-src="holder.js/500x500/auto" alt="500x500" src="{{ asset('img/garagiste-services-proposes-par.jpg.webp') }}" data-holder-rendered="true" style="width: 500px; height: 500px;">
+			</div>
+		</div>
+		<hrclass="featurette-divider">
+			{% include "_partials/_picto.html.twig"%}
+
+			<div class="container text-center">
+				<div class="row">
+					<div class="col">
+						<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2888.8431577570086!2d1.4897966767634052!3d43.609807171104094!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12aebd3d4821f031%3A0xe570cd37bb1f3280!2s43%20Av.%20des%20A%C3%A9rostiers%2C%2031130%20Balma!5e0!3m2!1sfr!2sfr!4v1710172662145!5m2!1sfr!2sfr" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+					</div>
+					<div class="col">
+						<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2887.0606273658323!2d1.4232276148631757!3d43.64690694832002!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x12aea4bff947aa8d%3A0x8b53fda96ab01da1!2sLand%20Rover%20Toulouse%20Auto%20R%C3%A9al%20Group!5e0!3m2!1sfr!2sfr!4v1710172721130!5m2!1sfr!2sfr" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+					</div>
+					<br>
+					<p class="lead">N'attendez plus, venez nous voir !</p>
+
+
+					<!-- /.container -->
+
+				</main>
+			{% endblock %}

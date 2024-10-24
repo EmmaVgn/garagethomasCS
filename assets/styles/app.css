@@ -89,6 +89,54 @@ a:hover {
   outline: none;
 }
 
+.form-check {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px; /
+}
+
+.form-check input[type="checkbox"] {
+  display: none; 
+}
+
+.form-check label {
+  position: relative;
+  padding-left: 30px; 
+  cursor: pointer;
+  font-weight: 400; 
+}
+
+.form-check label::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px; 
+  height: 20px; 
+  border: 2px solid #1c5634; 
+  border-radius: 4px; 
+  background-color: #fff; 
+  transition: background-color 0.3s, border-color 0.3s; 
+}
+
+.form-check input[type="checkbox"]:checked + label::before {
+  background-color: #1c5634; 
+  border-color: #1c5634; 
+}
+
+.form-check input[type="checkbox"]:checked + label::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 10px;
+  width: 6px;
+  height: 12px;
+  border: solid white; 
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg);
+}
+
 /*--------------------------------------------------------------
   Cards
   --------------------------------------------------------------*/

@@ -42,6 +42,7 @@ class SearchFormType extends AbstractType
                     return $category->getName() . ' (' . $category->getProducts()->count() . ')';
                 }
             ])
+            
             ->add('model', EntityType::class, [
                 'label' => false,
                 'required' => false,

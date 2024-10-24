@@ -14,6 +14,8 @@
 		{{ form_row(form.q) }}
 	</div>
 </div>
+
+
 <div class="box border-bottom ps-1">
 	<div class="box-label text-uppercase d-flex align-items-center">
 		Catégories
@@ -22,9 +24,19 @@
 		</button>
 	</div>
 	<div class="collapse show mt-2 ps-2" id="collapseCategories">
-		{{ form_row(form.categories) }}
+		<div
+			class="d-flex flex-column">
+			<!-- Utilisation de flex-column pour aligner les éléments en colonne -->
+			{% for category in form.categories %}
+				<div class="form-check">
+					{{ form_widget(category) }}
+					<label class="form-check-label" for="{{ category.vars.id }}">{{ category.vars.label }}</label>
+				</div>
+			{% endfor %}
+		</div>
 	</div>
 </div>
+
 <div class="box border-bottom ps-1">
 	<div class="box-label text-uppercase d-flex align-items-center">
 		Marques
@@ -33,9 +45,19 @@
 		</button>
 	</div>
 	<div class="collapse mt-2 ps-2" id="collapseModels">
-		{{ form_row(form.model) }}
+		<div
+			class="d-flex flex-column">
+			<!-- Utilisation de flex-column pour aligner les éléments en colonne -->
+			{% for model in form.model %}
+				<div class="form-check">
+					{{ form_widget(model) }}
+					<label class="form-check-label" for="{{ model.vars.id }}">{{ model.vars.label }}</label>
+				</div>
+			{% endfor %}
+		</div>
 	</div>
 </div>
+
 <div class="box border-bottom ps-1 pb-3">
 	<div class="box-label text-uppercase d-flex align-items-center">
 		Prix

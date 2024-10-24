@@ -1,5 +1,7 @@
 <?php
+
 namespace App\Controller;
+
 use DateTime;
 use App\Data\SearchData;
 use App\Form\SearchFormType;
@@ -23,7 +25,7 @@ class ProductController extends AbstractController
         if (!$category) {
             throw $this->createNotFoundException("La catégorie demandée n'existe pas");
         }
-        
+
         return $this->render('product/category.html.twig', [
             'slug' => $slug,
             'category' => $category,
@@ -36,9 +38,11 @@ class ProductController extends AbstractController
         $product = $productRepository->findOneBy([
             'slug' => $slug
         ]);
+
         if (!$product) {
             throw $this->createNotFoundException("Le véhicule demandé n'existe pas");
         }
+
         return $this->render('product/show.html.twig', [
             'product' => $product
         ]);
@@ -57,14 +61,14 @@ class ProductController extends AbstractController
         [$minKms, $maxKms] = $productRepository->findMinMaxKms($data);
         [$minDate, $maxDate] = $productRepository->findMinMaxDate($data);
         $products = $productRepository->findSearch($data);
-
-        // $totalItems = $productRepository->countItems($data);
+        // Count items with search criteria
+        $totalItems = $productRepository->countItems($data);
         if ($request->get('ajax')) {
+            $totalItems = $productRepository->countItems($data);
             return new JsonResponse([
                 'content' => $this->renderView('product/_products.html.twig', [
                     'products' => $products,
                 ]),
-
                 'sorting' => $this->renderView('product/_sorting.html.twig', ['products' => $products]),
                 'pagination' => $this->renderView('product/_pagination.html.twig', ['products' => $products]),
                 'minPrice' => $minPrice,
@@ -73,6 +77,7 @@ class ProductController extends AbstractController
                 'maxKms' => $maxKms,
                 'minDate' => $minDate,
                 'maxDate' => $maxDate,
+                'totalItems' => $totalItems,
             ]);
         }
         
@@ -85,7 +90,7 @@ class ProductController extends AbstractController
             'maxKms' => $maxKms,
             'minDate' => $minDate,
             'maxDate' => $maxDate,
-            // 'totalItems' => $totalItems,
+            'totalItems' => $totalItems,
         ]);
     }
 }

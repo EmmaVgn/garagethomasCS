@@ -42,7 +42,7 @@ class UserCrudController extends AbstractCrudController
                 ->setFormTypeOptions(['attr' => ['placeholder' => 'Email de l\'utilisateur']]),
             TextField::new('plainPassword', 'Mot de passe :')
                 ->onlyWhenCreating()->setRequired(true)
-                ->setFormType(PasswordType::class)
+            
                 ->setFormTypeOptions(['attr' => ['placeholder' => 'Mot de passe de l\'utilisateur']])
                 ->hideOnIndex(),
             FormField::addPanel('Changer le mot de passe')->setIcon('fas fa-key')->onlyWhenUpdating(),
@@ -51,7 +51,7 @@ class UserCrudController extends AbstractCrudController
                 ->setFormTypeOptions([
                     'attr' => ['placeholder' => 'Nouveau mot de passe de l\'utilisateur'],
                 ])
-                ->setFormType(PasswordType::class)
+             
                 ->setHelp('Pour modifier le mot de passe, vous devez saisir un nouveau mot de passe. Sinon, laissez le champ vide.')
                 ->hideOnIndex(),
         ];

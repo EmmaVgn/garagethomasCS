@@ -68,6 +68,13 @@ a:hover {
   background-color: #386d4f !important;
 }
 
+.btn-link {
+  color: #1c5634 !important;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+}
+
 /*--------------------------------------------------------------
   Form control
   --------------------------------------------------------------*/

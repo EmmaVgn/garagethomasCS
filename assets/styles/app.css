@@ -23,11 +23,27 @@ h6 {
   font-family: "Josefin Slab", serif;
 }
 
+a {
+  color: #1c5634;
+}
+
+a:hover {
+  color: #386d4f;
+}
+
+.alert {
+  margin-bottom: 15px;
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 10px;
+  border-radius: 5px;
+}
+
 /*--------------------------------------------------------------
       Boutons
   --------------------------------------------------------------*/
 .btn {
-  background-color: #1c5634; /* Couleur normale */
+  background-color: #1c5634;
   color: #ffffff;
   border: none;
   border-radius: 5px;
@@ -36,8 +52,52 @@ h6 {
 }
 
 .btn:hover {
-  background-color: #386d4f; /* Couleur au survol */
+  background-color: #386d4f;
   transform: scale(1.05);
+}
+
+.btn-primary {
+  background-color: #1c5634;
+  border: none;
+  transition: background-color 0.3s;
+  font-family: "Roboto Slab", serif;
+}
+
+.btn-primary:hover {
+  background-color: #386d4f;
+}
+
+/*--------------------------------------------------------------
+  Form control
+  --------------------------------------------------------------*/
+.form-control {
+  border-radius: 5px;
+  border: 1px solid #cccccc;
+  transition: border-color 0.3s;
+}
+
+.form-control:focus {
+  border-color: #1c5634;
+  outline: none;
+}
+
+/*--------------------------------------------------------------
+  Cards
+  --------------------------------------------------------------*/
+.card {
+  border: none;
+  border-radius: 10px;
+}
+
+.card-header {
+  background-color: #1c5634;
+  color: #ffffff;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.card-body {
+  background-color: #ffffff;
 }
 
 /*--------------------------------------------------------------
@@ -180,4 +240,48 @@ h6 {
 .footer-bottom {
   text-align: center;
   margin-top: 20px;
+}
+
+/*--------------------------------------------------------------
+    Page de connexion
+--------------------------------------------------------------*/
+.login-container {
+  max-width: 400px;
+  margin: 100px auto;
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-container h1 {
+  margin-bottom: 20px;
+  color: rgb(28, 86, 52);
+}
+
+.login-container label {
+  display: block;
+  margin-bottom: 5px;
+  color: #333333;
+}
+
+.login-container input[type="email"],
+.login-container input[type="password"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+  transition: border-color 0.3s;
+}
+
+.login-container input[type="email"]:focus,
+.login-container input[type="password"]:focus {
+  border-color: rgb(56, 109, 79);
+  outline: none;
+}
+
+.login-container .btn {
+  width: 100%;
+  margin-top: 10px;
 }

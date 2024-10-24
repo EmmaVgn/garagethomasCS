@@ -23,6 +23,11 @@ class Model
     #[ORM\Column(length: 255)]
     private ?string $slug = null;
 
+    public function __toString(): string
+    {
+        return $this->name;
+    }
+
     /**
      * @var Collection<int, Product>
      */

@@ -24,11 +24,11 @@ h6 {
 }
 
 a {
-  color: #1c5634;
+  color: #1c5634 !important;
 }
 
 a:hover {
-  color: #386d4f;
+  color: #386d4f !important;
 }
 
 .alert {
@@ -57,14 +57,15 @@ a:hover {
 }
 
 .btn-primary {
-  background-color: #1c5634;
+  background-color: #1c5634 !important;
   border: none;
   transition: background-color 0.3s;
   font-family: "Roboto Slab", serif;
+  border-color: #1c5634 !important;
 }
 
 .btn-primary:hover {
-  background-color: #386d4f;
+  background-color: #386d4f !important;
 }
 
 /*--------------------------------------------------------------
@@ -249,6 +250,7 @@ a:hover {
   max-width: 400px;
   margin: 100px auto;
   padding: 20px;
+  margin-top: 0px;
   background-color: #ffffff;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -284,4 +286,8 @@ a:hover {
 .login-container .btn {
   width: 100%;
   margin-top: 10px;
+}
+
+.text-custom {
+  color: #1c5634;
 }

@@ -17,6 +17,12 @@ class Product
     public const STATUS_DIESEL = 'Diesel';
     public const STATUS_HYBRID = 'Hybride';
     public const STATUS_ELECTRIC = 'Electrique';
+    public const STATUS_AUTOMATIC = 'Automatique';
+    public const STATUS_MANUAL = 'Manuelle';
+    public const STATUS_LEVEL_0 = 'Niveau 0';
+    public const STATUS_LEVEL_1 = 'Niveau 1';
+    public const STATUS_LEVEL_2 = 'Niveau 2';
+    public const STATUS_LEVEL_3 = 'Niveau 3';
 
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -62,6 +68,21 @@ class Product
 
     #[ORM\ManyToOne(inversedBy: 'products')]
     private ?Type $type = null;
+
+    #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: 'La boite de vitesse est obligatoire !')]
+    private ?string $gearbox = null;
+
+    #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: 'La puissance fiscale est obligatoire !')]
+    private ?string $fiscalhorsepower = null;
+
+    #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: 'Le critair est obligatoire !')]
+    private ?string $critair = null;
+
+    #[ORM\ManyToOne(inversedBy: 'products')]
+    private ?Color $color = null;
 
     public function __construct()
     {
@@ -226,5 +247,50 @@ class Product
         
         return $this;
     }
+
+    public function getGearbox(): ?string
+    {
+        return $this->gearbox;
+    }
+
+    public function setGearbox(string $gearbox): static
+    {
+        $this->gearbox = $gearbox;
+        return $this;
+    }
+
+    public function getFiscalhorsepower(): ?string
+    {
+        return $this->fiscalhorsepower;
+    }
+
+    public function setFiscalhorsepower(string $fiscalhorsepower): static
+    {
+        $this->fiscalhorsepower = $fiscalhorsepower;
+        return $this;
+    }
+
+    public function getCritair(): ?string
+    {
+        return $this->critair;
+    }
+
+    public function setCritair(string $critair): static
+    {
+        $this->critair = $critair;
+        return $this;
+    }
+
+    public function getColor(): ?Color
+    {
+        return $this->color;
+    }
+
+    public function setColor(?Color $color): static
+    {
+        $this->color = $color;
+        return $this;
+    }
+    
 
 }

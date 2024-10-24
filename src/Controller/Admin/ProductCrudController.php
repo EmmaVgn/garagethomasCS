@@ -74,6 +74,19 @@ class ProductCrudController extends AbstractCrudController
             AssociationField::new('model', 'Marque du véhicule')
                 ->autocomplete(),
             AssociationField::new('type', 'Modèle du véhicule')->autocomplete()->hideOnIndex(),
+            AssociationField::new('color', 'Couleur du véhicule')->hideOnIndex()->autocomplete(),
+            FormField::addColumn(6),
+            ChoiceField::new('gearbox', 'Boîte de vitesse')->hideOnIndex()->setChoices([
+                'Automatique' => 'Automatique',
+                'Manuelle' => 'Manuelle',
+            ]),
+            TextField::new('fiscalhorsepower', 'Puissance fiscale')->hideOnIndex(),
+            ChoiceField::new('critair', 'CRIT\'AIR')->hideOnIndex()->setChoices([
+                'Niveau 0' => 'Niveau 0',
+                'Niveau 1' => 'Niveau 1',
+                'Niveau 2' => 'Niveau 2',
+                'Niveau 3' => 'Niveau 3',
+            ]),
         ];
     }
 

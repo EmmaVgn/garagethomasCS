@@ -16,7 +16,7 @@
 	<h1>{{ product.name }}
 		({{ product.price | amount }})</h1>
 	<div class="row">
-		<div class="col-md-8">
+		<div class="col-lg-8 mb-md-3 mb-sm-3">
 			<div id="carouselSingleVehiculeIndicators" class="carousel slide carousel-fade">
 				<div class="carousel-inner">
 					{% for image in product.images %}
@@ -47,37 +47,7 @@
 						</ul>
 						<div class="tab-content pt-2">
 							<div class="tab-pane fade show active features" id="features">
-								<h5 class="card-title">Détail du véhicule</h5>
-								<p class="small fst-italic">{{ product.name }}</p>
-								<div class="row">
-									<div class="col-lg-3 col-md-4 label ">Marque :</div>
-									<div class="col-lg-9 col-md-8 fw-bold">{{ product.model.name }}</div>
-								</div>
-								<div class="row">
-									<div class="col-lg-3 col-md-4 label ">Modèle :</div>
-									<div class="col-lg-9 col-md-8 fw-bold">{{ product.type.name }}</div>
-								</div>
-								<div class="row">
-									<div class="col-lg-3 col-md-4 label">Kilométrage :</div>
-									<div class="col-lg-9 col-md-8 fw-bold">{{ product.kilometers }}
-										Kms</div>
-								</div>
-								<div class="row">
-									<div class="col-lg-3 col-md-4 label">Année :</div>
-									<div class="col-lg-9 col-md-8 fw-bold">{{ product.circulationAt | date('Y') }}</div>
-								</div>
-								<div class="row">
-									<div class="col-lg-3 col-md-4 label">Type de véhicule :</div>
-									<div class="col-lg-9 col-md-8 fw-bold">{{ product.category.name }}</div>
-								</div>
-								<div class="row">
-									<div class="col-lg-3 col-md-4 label">Carburant :</div>
-									<div class="col-lg-9 col-md-8 fw-bold">{{ product.energy }}</div>
-								</div>
-								<div class="row">
-									<div class="col-lg-3 col-md-4 label">Mise en circulation :</div>
-									<div class="col-lg-9 col-md-8 fw-bold">{{ product.circulationAt | date("d/m/Y") }}</div>
-								</div>
+								{% include "product/_detailed_card.html.twig" %}
 								<div class="row mt-4">
 									<h5 class="card-title">A propos de ce véhicule</h5>
 									<p>{{ product.shortDescription | raw | nl2br  }}</p>
@@ -92,7 +62,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-md-4">
+		<div class="col-lg-4">
 			<div class="card">
 				<div class="card-body profile-card pt-4 d-flex flex-column align-items-center">
 					<h3 class="text-center">{{ product.name }}</h3>
@@ -102,13 +72,17 @@
 							{{ product.energy }}
 						</div>
 						<div class="d-flex flex-column align-items-center me-2">
-							<i class="fs-3 fa-solid fa-gauge"></i>
+							<i class="fs-3 fa-solid fa-road"></i>
 							{{ product.kilometers }}
 							Kms
 						</div>
 						<div class="d-flex flex-column align-items-center me-2">
 							<i class="fs-3 fa-regular fa-calendar-days"></i>
 							{{ product.circulationAt | date('Y') }}
+						</div>
+						<div class="d-flex flex-column align-items-center me-2">
+							<i class="fs-3 fa-solid fa-gauge"></i>
+							{{ product.gearbox }}
 						</div>
 					</div>
 					<div class="d-flex mt-4 fs-2 border-top fw-bold">

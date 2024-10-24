@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Type;
 use App\Entity\User;
 use App\Entity\Model;
 use App\Entity\Images;
@@ -44,6 +45,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Catégorie', 'fas fa-list', Category::class);
         yield MenuItem::linkToCrud('Modèles', 'fas fa-trademark', Model::class);
         yield MenuItem::linkToCrud('Modèles', 'fas fa-car-battery', Type::class);
+        yield MenuItem::linkToCrud('Couleurs', 'fas fa-palette', Color::class);
         yield MenuItem::linkToCrud('Messages', 'fas fa-envelope', Contact::class);
         yield MenuItem::linkToCrud('Images', 'fas fa-image', Images::class);
         

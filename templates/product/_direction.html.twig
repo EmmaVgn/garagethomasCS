@@ -30,7 +30,7 @@
 					<hr>
 					<p class="card-text">{{ product.shortDescription|raw|nl2br|striptags|u.truncate(150, '...') }}</p>
 					<hr>
-					<a href="{{ path('product_show', {'category_slug': product.category.slug, 'slug': product.slug}) }}" class="btn">En savoir plus</a>
+					<a href="{{ path('product_show', {'category_slug': product.category.slug, 'slug': product.slug}) }}" class="btn-direction">En savoir plus</a>
 				</div>
 			</div>
 		{% else %}

@@ -30,7 +30,7 @@ ul {
 
 
 a {
-  color: white !important;
+  color: #1c5634  !important;
 }
 
 a:hover {
@@ -79,6 +79,15 @@ a:hover {
   background-color: transparent;
   border: none;
   padding: 0;
+}
+
+.btn-direction {
+  background-color: #1c5634;
+  color: #ffffff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  transition: background-color 0.3s, transform 0.3s;
 }
 
 /*--------------------------------------------------------------
@@ -970,4 +979,56 @@ input[type="text"] {
 .category-title-container {
   margin-bottom: 20px; /* Ajoute un espacement sous chaque catégorie */
   flex-grow: 1; /* Permet au conteneur de titre de prendre l'espace restant */
+}
+
+/*--------------------------------------------------------------
+# Service page
+--------------------------------------------------------------*/h2.featurette-heading {
+    font-size: 2.5rem; /* Taille de la police pour les titres */
+    margin-bottom: 0.5rem;
+}
+
+.lead {
+    font-size: 1.1rem; /* Taille de la police pour le texte principal */
+    color: #343a40; /* Couleur du texte principale */
+}
+
+.featurette {
+    margin: 60px 0; /* Espacement entre les featurettes */
+    background-color: #fff; /* Couleur de fond pour les sections */
+    padding: 20px; /* Espacement interne */
+    border-radius: 10px; /* Coins arrondis */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre légère */
+}
+
+.featurette-image {
+    border-radius: 10px; /* Coins arrondis pour les images */
+    transition: transform 0.3s; /* Transition pour l'animation d'agrandissement */
+}
+
+.featurette-image:hover {
+    transform: scale(1.05); /* Effet de zoom au survol */
+}
+
+.text-danger {
+    font-weight: bold;
+    color: #dc3545; /* Couleur rouge Bootstrap */
+}
+
+.text-muted {
+    color: #6c757d; /* Couleur grise pour le texte atténué */
+}
+.featurette-divider {
+  margin: 40px 0; /* Espacement autour des diviseurs */
+}
+
+/* Styles pour les iframes */
+iframe {
+  border-radius: 10px; /* Coins arrondis pour les iframes */
+}
+
+@media (max-width: 768px) {
+  h2.featurette-heading {
+      font-size: 2rem; /* Réduction de la taille de la police sur petits écrans */
+  }
 }

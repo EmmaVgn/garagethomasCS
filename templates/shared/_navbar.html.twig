@@ -23,7 +23,7 @@
 			</ul>
 			<ul class="navbar-nav">
 				<li class="nav-item">
-					<a class="nav-link{% if app.request.attributes.get('_route') == 'search' %} active{% endif %}" href="#">
+					<a class="nav-link{% if app.request.attributes.get('_route') == 'search' %} active{% endif %}" href="{{ path('search')}}">
 						<i class="fa-solid fa-magnifying-glass"></i>
 					</a>
 				</li>

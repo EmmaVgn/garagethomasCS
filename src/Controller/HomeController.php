@@ -2,10 +2,13 @@
 
 namespace App\Controller;
 
+use App\Data\SearchData;
+use App\Form\SearchFormType;
 use App\Repository\ProductRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class HomeController extends AbstractController
 {
@@ -48,4 +51,20 @@ class HomeController extends AbstractController
             'products' => $products
         ]);
     }
+
+    #[Route('/search', name: 'search')]
+    public function search(Request $request, ProductRepository $productRepository): Response
+    {
+        $searchData = new SearchData();
+        $searchForm = $this->createForm(SearchFormType::class, $searchData);
+        $searchForm->handleRequest($request);
+
+        $vehicles = $productRepository->findSearch($searchData);
+
+        return $this->render('shared/_results.html.twig', [
+            'searchForm' => $searchForm->createView(),
+            'vehicles' => $vehicles,
+        ]);
+    }
+
 }

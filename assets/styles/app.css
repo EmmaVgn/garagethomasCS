@@ -68,6 +68,7 @@ a:hover {
   transition: background-color 0.3s;
   font-family: "Roboto Slab", serif;
   border-color: #1c5634 !important;
+  color: white !important;
 }
 
 .btn-primary:hover {
@@ -88,6 +89,16 @@ a:hover {
   border-radius: 5px;
   padding: 10px 20px;
   transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn-contact{
+  background-color: #1c5634;
+  color: #ffffff !important;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  transition: background-color 0.3s, transform 0.3s;
+  margin-bottom: 50px;
 }
 
 /*--------------------------------------------------------------
@@ -983,7 +994,8 @@ input[type="text"] {
 
 /*--------------------------------------------------------------
 # Service page
---------------------------------------------------------------*/h2.featurette-heading {
+--------------------------------------------------------------*/
+h2.featurette-heading {
     font-size: 2.5rem; /* Taille de la police pour les titres */
     margin-bottom: 0.5rem;
 }
@@ -1031,4 +1043,97 @@ iframe {
   h2.featurette-heading {
       font-size: 2rem; /* Réduction de la taille de la police sur petits écrans */
   }
+}
+
+/*--------------------------------------------------------------
+# Commentaires clients
+--------------------------------------------------------------*/
+.testimonial {
+  width: 80%;
+  margin: 0 auto;
+  padding: 20px 20px 40px;
+}
+@media screen and (max-width: 768px) {
+  .testimonial {
+      width: 80%;
+      margin: 20px auto 40px;
+      padding: 20px 20px 40px;
+  }
+}
+.header-titles {
+  text-align: center;
+  margin: 10px 0 20px;
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 2rem;
+  position: relative;
+}
+.header-titles::before, .header-titles::after {
+  background-color: #cc342b;
+  height: 2px;
+  width: 10%;
+  content: '';
+  position: absolute;
+  transform: translateX(-50%);
+}
+.header-titles::before {
+  bottom: -5px;
+}
+.header-titles::after {
+  top: -5px;
+}
+.header-description {
+  max-width: 1200px;
+  font-size: 1rem;
+  font-weight: 400;
+  margin: 20px auto;
+  padding: 10px;
+}
+.add-review {
+  width: 100%;
+  text-align: center;
+  margin: 20px 0 0;
+}
+.btn-fill {
+  border: 2px solid transparent;
+  padding: 0.2rem 0.4rem;
+  border-radius: 0.5rem;
+  background-color: #cc342b;
+  color: #fff;
+  cursor: pointer;
+}
+.carousel {
+  max-width: 600px;
+  margin: 10px auto 0;
+}
+span.rating i {
+  color: gold;
+}
+
+.star-rating i {
+  cursor: pointer;
+}
+.star-rating > i.far.fa-star {
+  font-size: 24px;
+  color: #ccc;
+  transition: color 0.3s ease-in-out;
+}
+.star-rating > i.fa-star.fas {
+  font-size: 24px;
+  color: #f8d32b;
+}
+
+.span-avis {
+  position: absolute;
+  left: 50%; /* Centrer horizontalement */
+  transform: translateX(-50%); /* Ajuste le centrage */
+  font-size: 1.5rem;
+  color: #333333;
+  margin-top: -60px;
+}
+
+
+
+.container-service-rapide{
+  margin-bottom: 50px;
 }

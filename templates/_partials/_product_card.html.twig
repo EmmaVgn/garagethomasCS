@@ -4,6 +4,7 @@
 	<img src="{{ vich_uploader_asset(p.images.first, 'imageFile') }}" alt="Product Image" class="img-fluid">
 	<div class="card-body">
 		<h4 class="card-title">{{ p.name | uppercase }}
+			<br>
 			<span class="text-primary fw-bold">
 				({{ p.price | amount }})</h4>
 		</span>

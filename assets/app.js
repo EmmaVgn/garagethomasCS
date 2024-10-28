@@ -11,6 +11,7 @@ import 'bootstrap';
 import './js/nouislider.min.js';
 import './styles/nouislider.min.css';
 import './js/filter.js';
+import { Carousel } from "bootstrap";
 
 
 console.log('This log comes from assets/app.js - welcome to AssetMapper! 🎉');
@@ -79,3 +80,25 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
+// Star rating
+const ratingInput = document.querySelector('#comment_form_rating');
+if (ratingInput) {
+    const starRating = document.querySelector('.star-rating');
+    starRating.addEventListener('click', function (event) {
+        if (event.target.matches('i')) {
+            const ratingValue = event.target.getAttribute('data-rating');
+            ratingInput.value = ratingValue;
+            // Remove 'far' class and add 'fas' class for selected stars
+            starRating.querySelectorAll('i').forEach(function (star) {
+                const starRatingValue = star.getAttribute('data-rating')
+                if (starRatingValue <= ratingValue) {
+                    star.classList.remove('far');
+                    star.classList.add('fas');
+                } else {
+                    star.classList.remove('fas');
+                    star.classList.add('far');
+                }
+            })
+        }
+    })
+}

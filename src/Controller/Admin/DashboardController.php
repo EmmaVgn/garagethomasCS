@@ -8,6 +8,7 @@ use App\Entity\Color;
 use App\Entity\Model;
 use App\Entity\Energy;
 use App\Entity\Images;
+use App\Entity\Comment;
 use App\Entity\Contact;
 use App\Entity\Critair;
 use App\Entity\Product;
@@ -52,6 +53,7 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Motorisation', 'fas fa-gas-pump', Energy::class);
         yield MenuItem::linkToCrud('Crit\'Air', 'fas fa-biohazard', Critair::class);
         yield MenuItem::linkToCrud('Messages', 'fas fa-envelope', Contact::class);
+        yield MenuItem::linkToCrud('Avis', 'fas fa-comment', Comment::class);
         yield MenuItem::linkToCrud('Images', 'fas fa-image', Images::class);
         
         if ($this->IsGranted('ROLE_ADMIN')) {

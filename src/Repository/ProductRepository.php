@@ -134,4 +134,44 @@ class ProductRepository extends ServiceEntityRepository
             $query->andWhere('m.id IN (:model)')->setParameter('model', $search->model);
         }
     }
+
+    public function findByLowMileage(int $maxKilometers = 50000): array
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.kilometers < :maxKilometers')
+            ->andWhere('p.price <= :maxPrice') // Condition pour le prix
+            ->setParameter('maxKilometers', $maxKilometers)
+            ->setParameter('maxPrice', 12000) // Limite de prix à 12 000 euros
+            ->orderBy('p.kilometers', 'ASC')
+            ->getQuery()
+            ->getResult();
+    }
+    
+
+    public function findByLowPrice(): array
+    {
+        return $this->createQueryBuilder('p')
+            ->andWhere('p.price <= :maxPrice') // Condition pour le prix
+            ->setParameter('maxPrice', 15000) // Limite de prix à 15 000 euros
+            ->orderBy('p.price', 'ASC') // Trier par prix croissant
+            ->setMaxResults(10) // Limiter le nombre de résultats si besoin
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function findByDirection(int $maxKilometers = 30000): array
+{
+    return $this->createQueryBuilder('p')
+        ->andWhere('p.kilometers < :maxKilometers')
+        ->andWhere('p.circulationAt >= :minDate') // Limite pour les véhicules récents
+        ->setParameter('maxKilometers', $maxKilometers)
+        ->setParameter('minDate', (new \DateTime())->modify('-3 years')) // Ajustez la période selon vos critères
+        ->orderBy('p.circulationAt', 'DESC')
+        ->getQuery()
+        ->getResult();
+}
+
+    
+
+
 }

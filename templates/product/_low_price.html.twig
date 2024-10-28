@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Nos petits prix
+{% endblock %}
+
+{% block body %}
+	<h1>Nos véhicules à petits prix</h1>
+
+	<div class="d-flex flex-wrap">
+		{% for product in products %}
+			<div
+				class="card mb-3 me-2" style="width: 18rem;">
+				{# Render only the first image #}
+				<img src="{{ vich_uploader_asset(product.images.first, 'imageFile') }}" alt="Image du produit" class="card-img-top img-fluid">
+				<div class="card-body">
+					<h4 class="card-title">{{ product.name | uppercase }}
+						<span class="text-primary fw-bold">({{ product.price | amount }})</span>
+					</h4>
+					<span class="d-flex flex-row align-items-center align-self-center flex-wrap">
+						<span class="badge bg-info me-1">{{ product.category.name }}</span>
+						<span class="me-1">/
+							{{ product.energy.name }}</span>
+						<span class="me-1">/
+							{{ product.kilometers }}
+							kms</span>
+						<span>/
+							{{ product.circulationAt | date("Y") }}</span>
+					</span>
+					<hr>
+					<p class="card-text">
+						{{ product.shortDescription | raw | nl2br | striptags | u.truncate(150, '...') }}
+					</p>
+					<hr>
+					<a href="{{ path('product_show', { category_slug: product.category.slug, slug: product.slug }) }}" class="btn btn-primary">En savoir plus</a>
+				</div>
+			</div>
+		{% else %}
+			<p>Aucun véhicule à petits prix trouvé.</p>
+		{% endfor %}
+	</div>
+{% endblock %}

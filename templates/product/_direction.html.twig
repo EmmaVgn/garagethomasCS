@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Véhicules Récents et Peu Kilométrés
+{% endblock %}
+
+{% block body %}
+	<h1>Véhicules Idéals pour les personnes souhaitant un véhicule récent</h1>
+	<p>Idéal pour les personnes souhaitant un véhicule récent, avec peu de kilomètres.</p>
+
+	<div class="products">
+		{% for product in products %}
+			<div
+				class="card mb-3 me-2">
+				{# Render only the first image #}
+				<img src="{{ vich_uploader_asset(product.images.first, 'imageFile') }}" alt="Image de {{ product.name }}" class="img-fluid">
+				<div class="card-body">
+					<h4 class="card-title">{{ product.name | uppercase }}
+						<span class="text-primary fw-bold">({{ product.price | amount }})</span>
+					</h4>
+					<span class="d-flex flex-row align-items-center flex-wrap">
+						<span class="badge bg-info me-1">{{ product.category.name }}</span>
+						<span class="me-1">/
+							{{ product.energy.name }}</span>
+						<span class="me-1">/
+							{{ product.kilometers }}
+							kms</span>
+						<span>/
+							{{ product.circulationAt | date("Y") }}</span>
+					</span>
+					<hr>
+					<p class="card-text">{{ product.shortDescription|raw|nl2br|striptags|u.truncate(150, '...') }}</p>
+					<hr>
+					<a href="{{ path('product_show', {'category_slug': product.category.slug, 'slug': product.slug}) }}" class="btn">En savoir plus</a>
+				</div>
+			</div>
+		{% else %}
+			<p>Aucun véhicule récent trouvé.</p>
+		{% endfor %}
+	</div>
+{% endblock %}

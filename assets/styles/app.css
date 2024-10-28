@@ -744,6 +744,17 @@ input[type="text"] {
     margin: 0 auto; /* Centrer la bordure */
 }
 
+.picto {
+  text-align: center; /* Centre le texte */
+  font-size: 1.5rem;
+  margin: 10px 0; /* Espacement autour du titre */
+}
+
+.picto .highlight {
+  color: #7b8a8b; /* Couleur du texte dans le span */
+  font-size: 3rem; /* Taille du texte du span */
+  display: inline-block; /* Assure que le span est traité comme un bloc en ligne */
+}
 
 
 /*--------------------------------------------------------------
@@ -887,77 +898,76 @@ input[type="text"] {
   }
 }
 
-    /*--------------------------------------------------------------
-  # used cars
-  --------------------------------------------------------------*/  
-  .sectionA {
-    padding: 20px; /* Espacement autour de la section */
-}
 
-.used-category-container {
-    display: flex; /* Affichage en ligne */
-    flex-wrap: wrap; /* Permet aux cartes de passer à la ligne */
-    justify-content: space-between; /* Espace entre les cartes */
-}
 
-.used-category {
-    background: white; /* Fond blanc pour les cartes */
-    border-radius: 8px; /* Coins arrondis */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Ombre pour un effet de profondeur */
-    margin: 10px; /* Espacement entre les cartes */
-    padding: 20px; /* Espacement interne */
-    text-align: center; /* Centrer le texte */
-    flex: 1 1 20%; /* 4 cartes par ligne */
-    min-width: 250px; /* Largeur minimum pour les petits écrans */
-    margin-bottom: 40px; /* Espacement en dessous de chaque carte */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 300px;
-}
-
-.used-category-title {
-    font-size: 1.5rem; /* Taille du titre */
-    margin: 10px 0; /* Espacement autour du titre */
-    margin-bottom: 40px; /* Espacement en dessous du titre */
-}
-
-.category-description {
-    font-size: 1rem; /* Taille de la description */
-    margin: 10px 0; /* Espacement autour de la description */
-    margin-bottom: 40px; /* Espacement en dessous de la description */
-}
-
-.category-link {
-    display: inline-block; /* Pour que le lien soit un bouton */
-    padding: 10px 15px; /* Espacement intérieur du bouton */
-    background-color: #007bff; /* Couleur de fond du bouton */
-    color: white; /* Couleur du texte du bouton */
-    border-radius: 5px; /* Coins arrondis */
-    text-decoration: none; /* Pas de soulignement */
-    transition: background-color 0.3s; /* Transition pour l'effet de survol */
-    margin: 10px 0;;
-    margin-top: 10px;
-}
-
-.category-link:hover {
-    background-color: #0056b3; /* Couleur au survol */
+/*--------------------------------------------------------------
+# Used Cars Section
+--------------------------------------------------------------*/
+.sectionA {
+  padding: 20px; /* Espacement autour de la section */
 }
 
 .our-used-car-title {
   text-align: center; /* Centre le texte */
   margin: 0; /* Supprime les marges par défaut */
   padding: 20px 0; /* Ajoute un espacement autour du titre */
-  display: flex; /* Utilise flexbox pour aligner sur une ligne */
-  justify-content: center; /* Centre le contenu */
-  align-items: center; /* Aligne verticalement le contenu */
+  color: #333333;
 }
 
 .our-used-car-title .bleu {
-  margin-left: 5px; /* Ajoute un espace entre le texte et le span */
+  color: #7b8a8b; /* Couleur du texte du span */
+  font-size: 3rem; /* Taille du texte du span */
+  margin-left: 5px/* Espace entre le texte et le span */
+}
+
+.used-category-container {
+  display: flex; /* Affichage en ligne */
+  flex-wrap: wrap; /* Permet aux cartes de passer à la ligne */
+  justify-content: space-between; /* Espace entre les cartes */
+}
+
+.used-category {
+  background: white; /* Fond blanc pour les cartes */
+  border-radius: 8px; /* Coins arrondis */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Ombre pour un effet de profondeur */
+  margin: 10px; /* Espacement entre les cartes */
+  padding: 20px; /* Espacement interne */
+  text-align: center; /* Centre le texte */
+  flex: 1 1 20%; /* 4 cartes par ligne */
+  min-width: 250px; /* Largeur minimum pour les petits écrans */
+  display: flex; /* Utilise Flexbox pour aligner le contenu à l'intérieur de chaque carte */
+  flex-direction: column; /* Aligne le contenu verticalement */
+  justify-content: space-between; /* Espace le contenu à l'intérieur de la carte */
+  height: 300px; /* Hauteur fixe pour toutes les cartes */
+}
+
+.used-category-title {
+  font-size: 1.5rem; /* Taille du titre */
+  margin: 10px 0; /* Espacement autour du titre */
+}
+
+.category-description {
+  font-size: 1rem; /* Taille de la description */
+  margin: 10px 0; /* Espacement autour de la description */
+}
+
+.category-link {
+  display: inline-block; /* Pour que le lien soit un bouton */
+  padding: 10px 15px; /* Espacement intérieur du bouton */
+  background-color: #1c5634; /* Couleur de fond du bouton */
+  color: white !important; /* Couleur du texte du bouton */
+  border-radius: 5px; /* Coins arrondis */
+  text-decoration: none; /* Pas de soulignement */
+  transition: background-color 0.3s; /* Transition pour l'effet de survol */
+  margin-top: 10px; /* Espacement en haut du lien */
+}
+
+.category-link:hover {
+  background-color: #386d4f; /* Couleur au survol */
+  color: white !important; /* Couleur du texte au survol */
 }
 
 .category-title-container {
   margin-bottom: 20px; /* Ajoute un espacement sous chaque catégorie */
-  flex-grow: 1;
+  flex-grow: 1; /* Permet au conteneur de titre de prendre l'espace restant */
 }
